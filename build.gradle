@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'fuck'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+test {
+//    testLogging.showStandardStreams = true
+
+}
+
+dependencies {
+    compile 'io.github.prashant-ramcharan:courgette-jvm:3.1.0'
+}
