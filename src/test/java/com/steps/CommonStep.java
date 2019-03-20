@@ -1,19 +1,18 @@
 package com.steps;
 
-import cucumber.api.java8.En;
+import cucumber.api.java.en.When;
 
 import static java.lang.Thread.currentThread;
 
-public class CommonStep  implements En {
+public class CommonStep {
 
-    public CommonStep() {
-        When("^run this step$", () -> {
-            System.out.println("-----");
-            System.out.println(System.currentTimeMillis());
-            Thread.sleep(100);
-            System.out.println(currentThread().getId());
-            System.out.println(System.currentTimeMillis());
-            System.out.println("-----");
-        });
+
+    @When("^run this step$")
+    public void run_this_step() {
+        System.out.println("-----");
+        System.out.println(currentThread().getId());
+        System.out.println("-----");
+        assert true;
     }
+
 }
