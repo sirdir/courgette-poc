@@ -12,10 +12,12 @@ repositories {
 }
 
 test {
-//    testLogging.showStandardStreams = true
-
+    debug = true
+//    useTestNG()
+    testLogging.showStandardStreams = true
 }
 
 dependencies {
-    compile 'io.github.prashant-ramcharan:courgette-jvm:3.1.0'
+    compile('io.cucumber:cucumber-java:4.2.5')
+    compile('io.cucumber:cucumber-testng:4.2.5')
 }
