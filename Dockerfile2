@@ -24,14 +24,7 @@ RUN mkdir -p /usr/src/wspace
 RUN chmod 777 /usr/src/wspace
 WORKDIR /usr/src/wspace
 
-RUN wget https://downloads.gradle.org/distributions/gradle-5.2.1-bin.zip
-RUN mkdir -p /opt/gradle
-RUN unzip -d /opt/gradle gradle-5.2.1-bin.zip
-
-ENV PATH="${PATH}:/opt/gradle/gradle-5.2.1/bin"
 ENV JAVA_HOME="/usr/lib/jvm/java-openjdk"
-ENV GRADLE_USER_HOME .gradle/cache/apiaa
-VOLUME $GRADLE_USER_HOME
 
 
 # set working directory GUI setup
