@@ -7,12 +7,12 @@ pipeline {
             parallel {
                 stage('gradle 1') {
                     steps{
-                        sh "./gradlew executeFeatures"
+                        sh "gradle executeFeatures"
                     }
                 }
                 stage('gradle 2') {
                     steps{
-                        sh "./gradlew executeFeatures"
+                        sh "gradle executeFeatures"
                     }
                 }
             }
