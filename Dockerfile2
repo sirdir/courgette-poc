@@ -1,0 +1,39 @@
+FROM centos:7.5.1804
+
+
+# Add a usergui user for running applications.
+RUN useradd usergui
+RUN mkdir -p /home/usergui && chown usergui:usergui /home/usergui
+#############################
+
+
+RUN cat /etc/system-release
+
+# install java
+
+RUN yum install -y \
+    java-1.8.0-openjdk-devel \
+    wget \
+
+RUN yum install -y \
+    nc \
+    unzip
+
+# set working directory
+RUN mkdir -p /usr/src/wspace
+RUN chmod 777 /usr/src/wspace
+WORKDIR /usr/src/wspace
+
+RUN wget https://downloads.gradle.org/distributions/gradle-5.2.1-bin.zip
+RUN mkdir -p /opt/gradle
+RUN unzip -d /opt/gradle gradle-5.2.1-bin.zip
+
+ENV PATH="${PATH}:/opt/gradle/gradle-5.2.1/bin"
+ENV JAVA_HOME="/usr/lib/jvm/java-openjdk"
+ENV GRADLE_USER_HOME .gradle/cache/apiaa
+VOLUME $GRADLE_USER_HOME
+
+
+# set working directory GUI setup
+WORKDIR /usr/src/wspace
+RUN ls -l

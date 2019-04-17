@@ -5,14 +5,24 @@ pipeline {
     stages {
         stage('gradle') {
             parallel {
+
                 stage('gradle 1') {
                     steps{
-                        sh "gradle executeFeatures"
+                        def dockerfile = 'Dockerfile1'
+                        test_gradle_1 = docker.build("test-1", "-f ${dockerfile} .")
+                        test_gradle_1.inside {
+                            sh "gradle executeFeatures"
+                        }
+
                     }
                 }
                 stage('gradle 2') {
                     steps{
-                        sh "gradle executeFeatures"
+                        def dockerfile = 'Dockerfile2'
+                        test_gradle_2 = docker.build("test-2", "-f ${dockerfile} .")
+                        test_gradle_2.inside {
+                            sh "gradle executeFeatures"
+                        }
                     }
                 }
             }
