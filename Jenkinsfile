@@ -12,7 +12,7 @@ pipeline {
                             def dockerfile = 'Dockerfile1'
                             test_gradle_1 = docker.build("test-1", "-f ${dockerfile} .")
                             test_gradle_1.inside {
-                                sh "./gradlew executeFeatures --rerun-tasks"
+                                sh "./gradlew executeFeatures --rerun-tasks --no-daemon"
                             }
                         }
                     }
@@ -23,7 +23,7 @@ pipeline {
                             def dockerfile = 'Dockerfile2'
                             test_gradle_2 = docker.build("test-2", "-f ${dockerfile} .")
                             test_gradle_2.inside {
-                                sh "./gradlew executeFeatures --rerun-tasks"
+                                sh "./gradlew executeFeatures --rerun-tasks --no-daemon"
                             }
                         }
                     }
